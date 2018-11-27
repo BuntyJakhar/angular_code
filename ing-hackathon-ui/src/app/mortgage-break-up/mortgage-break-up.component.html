@@ -11,24 +11,24 @@
             <div>
                 <p>
                     <span></span>Principal Amount</p>
-                <h5 id="loan_principal">{{checkResponse.principal}}</h5>
+                <h5 id="loan_principal">{{checkResponse.principal | currency:'EUR'}}</h5>
             </div>
             <div>
                 <p>
                     <span></span>Total Interest</p>
-                <h5 id="loan_interest">{{checkResponse.interest}}</h5>
+                <h5 id="loan_interest">{{checkResponse.interest | currency:'EUR'}}</h5>
             </div>
             <div>
                 <span>
                     <p>Total Payment</p>
                     <p>(Principal + Interest)</p>
                 </span>
-                <h5 id="loan_total_payment">{{checkResponse.principal + checkResponse.interest}}</h5>
+                <h5 id="loan_total_payment">{{(checkResponse.principal + checkResponse.interest)| currency:'EUR'}}</h5>
             </div>
         </div>
     </div>
     <div>
         <h5 class="emi-footer">Your Monthly Payment</h5>
-        <h1 id="loan_emi">{{checkResponse.monthlyCost}}</h1>
+        <h1 id="loan_emi">{{checkResponse.monthlyCost | currency:'EUR'}}</h1>
     </div>
 </div>

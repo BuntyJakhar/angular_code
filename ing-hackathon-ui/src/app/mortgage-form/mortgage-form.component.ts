@@ -13,11 +13,11 @@ import { first } from 'rxjs/operators';
 })
 export class MortgageFormComponent implements OnInit {
   @Input()
-  model = new Mortgage(1000, 3, 100000, 80000, 20);
+  model = new Mortgage(50000, 3, 100000, 80000, 20);
 
   submitted: boolean = false;
   mortgageResponse: any;
-  //mortgageResponse: any={"monthlyCost": 13.213300065462029, "principal": 1000, "interest": 109.91720549881052, "eligible": true}; 
+  //mortgageResponse: any={"monthlyCost": 13, "principal": 1000, "interest": 109, "eligible": true}; 
 
   mortgageError: boolean = false;
   loading: boolean = false;
@@ -46,6 +46,7 @@ export class MortgageFormComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    
     console.log("form Submitted" + JSON.stringify(this.model));
     this.dataService.getEligibilty(this.model).pipe(first())
       .subscribe(
@@ -55,7 +56,7 @@ export class MortgageFormComponent implements OnInit {
           this.chartData = [this.mortgageResponse.principal, this.mortgageResponse.interest];
         },
         error => {
-          this.mortgageError = error;
+          this.mortgageError=true;
           this.loading = false;
         });
 
